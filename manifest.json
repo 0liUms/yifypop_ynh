@@ -1,0 +1,35 @@
+{
+    "name": "Yify Pop",
+    "id": "yifypop",
+    "description": {
+        "en": "Inspired by Popcorn Time, a node web server to stream torrents from YIFY.",
+        "fr": "Inspiré de Popcorn Time, un serveur node pour streamer les torrents de YIFY."
+    },
+    "developer": {
+        "name": "Fol",
+        "email": "fol@fol.tf",
+        "url": "https://github.com/jesuisfol/yifypop_ynh"
+    },
+    "multi_instance": "true",
+    "arguments": {
+        "install" : [
+            {
+                "name": "domain",
+                "ask": {
+                    "en": "Choose a domain for Yify Pop",
+                    "fr": "Choisissez un domaine pour Yify Pop"
+                },
+                "example": "domain.org"
+            },
+            {
+                "name": "path",
+                "ask": {
+                    "en": "Choose a path for Yify Pop",
+                    "fr": "Choisissez un chemin pour Yify Pop"
+                },
+                "example": "/yifypop",
+                "default": "/yifypop"
+            }
+        ]
+    }
+}

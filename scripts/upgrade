@@ -1,0 +1,40 @@
+#!/bin/bash
+
+app_name="yifypop"
+
+domain=$(sudo yunohost app setting $app_name domain)
+path=$(sudo yunohost app setting $app_name path)
+
+# Remove trailing "/" for next commands
+path=${path%/}
+
+# Copy files to the right place
+final_path=/var/www/$app_name
+sudo mkdir -p $final_path
+sudo rm -rf $final_path/*
+sudo cp -r ../sources/* $final_path
+rm  -r ../sources
+
+# Files owned by root, www-data can just read
+sudo find $final_path -type f | xargs sudo chmod 644
+sudo find $final_path -type d | xargs sudo chmod 755
+sudo chown -R root: $final_path
+
+# Complete the installation
+cd $final_path
+sudo npm install
+
+# Configuration
+sudo yunohost app addaccess phpmyadmin -u $admin
+sudo yunohost app setting phpmyadmin admin -v $admin
+
+# Modify Nginx configuration file and copy it to Nginx conf directory
+sed -i "s@PATHTOCHANGE@$path@g" ../conf/nginx.conf
+nginxconf=/etc/nginx/conf.d/$domain.d/$app_name.conf
+sudo cp ../conf/nginx.conf $nginxconf
+sudo chown root: $nginxconf
+sudo chmod 600 $nginxconf
+
+geddy
+sudo service nginx reload
+sudo yunohost app ssowatconf
