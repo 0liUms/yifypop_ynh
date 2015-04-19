@@ -27,8 +27,8 @@
                     "en": "Choose a path for Yify Pop",
                     "fr": "Choisissez un chemin pour Yify Pop"
                 },
-                "example": "/yifypop",
-                "default": "/yifypop"
+                "example": "/yify-pop",
+                "default": "/yify-pop"
             }
         ]
     }
