@@ -1,3 +1,4 @@
-<h1>YIFI-pop for Yunohost</h1>
+[Yify Pop](https://github.com/yify-pop/yify-pop) pour [YunoHost](http://yunohost.org)
+======================
 
-https://github.com/yify-pop/yify-pop
+fork du travail de jesuisfol, abandonné ?
